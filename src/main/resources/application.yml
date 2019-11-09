@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: @activeSpringProfile@
 ---
 spring:
   profiles: local
@@ -12,7 +12,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://172.17.0.1:8081/eureka
+      defaultZone: http://localhost:8081/eureka
   instance:
     securePortEnabled: true
     instance-id: ${spring.application.name}:${server.port}
@@ -94,16 +94,15 @@ spring:
     name: fsd-gateway
 server:
   port: 8082
-  
-    
+
 eureka:
   client:
     service-url:
-      defaultZone: http://fsd-registry:8081/eureka
+      defaultZone: http://172.17.0.1:8081/eureka
   instance:
-    prefer-ip-address: true
+    securePortEnabled: true
     instance-id: ${spring.application.name}:${server.port}
-    
+
 # 服务管理配置
 management:
   endpoints:
@@ -117,7 +116,6 @@ management:
       show-details: ALWAYS
 
 # 网关配置
-  
 
 hystrix:
   command:
@@ -128,11 +126,13 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 80000
-    
+
 swagger.enabled: true
+logging:
+  config: classpath:logback-boot_dev.xml
 
 apiurl:
-  gatewayurl: http://fsd-gateway:8082
+  gatewayurl: http://localhost:8082
 
 ribbon:
   ReadTimeout: 20000
