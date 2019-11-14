@@ -25,7 +25,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		final String[] SWAGGER_UI = { "/", "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**",
 				"/actuator/**", "/account/v2/api-docs", "/mentor/v2/api-docs", "/course/v2/api-docs", "/payment/v2/api-docs",
-				"/account/api/v1/register", "/account/api/v1/getUsersByIds", "/mentor/api/v1/technologies"};
+				"/account/api/v1/register", "/account/api/v1/getUsersByIds",
+				"/mentor/api/v1/skills", "/mentor/api/v1/getMentorSkills", "/mentor/api/v1/getMentorsByFilter"};
 
 		web.ignoring().antMatchers(SWAGGER_UI);
 	}
