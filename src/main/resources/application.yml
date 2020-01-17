@@ -93,12 +93,12 @@ spring:
   application:
     name: fsd-gateway
 server:
-  port: 8082
+  port: 8080
 
 eureka:
   client:
     service-url:
-      defaultZone: http://172.17.0.1:8081/eureka
+      defaultZone: http://fsd-registry:8080/eureka
   instance:
     securePortEnabled: true
     instance-id: ${spring.application.name}:${server.port}
@@ -132,7 +132,7 @@ logging:
   config: classpath:logback-boot_dev.xml
 
 apiurl:
-  gatewayurl: http://localhost:8082
+  gatewayurl: http://fsd-gateway:8080
 
 ribbon:
   ReadTimeout: 20000
